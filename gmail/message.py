@@ -170,7 +170,7 @@ class Message():
         if re.search(r'X-GM-MSGID (\d+)', raw_headers):
             self.message_id = re.search(r'X-GM-MSGID (\d+)', raw_headers).groups(1)[0]
 
-        
+        print "subject is ",self.subject
         # Parse attachments into attachment objects array for this message
         self.attachments = [
             Attachment(attachment) for attachment in self.message._payload
@@ -221,6 +221,7 @@ class Attachment:
 
     def __init__(self, attachment):
         self.name = attachment.get_filename()
+        print "filename is ",self.name
         # Raw file data
         self.payload = attachment.get_payload(decode=True)
         # Filesize in kilobytes
