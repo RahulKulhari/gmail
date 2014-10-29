@@ -175,6 +175,7 @@ class Message():
         self.attachments = [
             Attachment(attachment) for attachment in self.message._payload
                 if not isinstance(attachment, basestring) and attachment.get('Content-Disposition') is not None
+                and attachment.get_filename() is not None
         ]
         
 
