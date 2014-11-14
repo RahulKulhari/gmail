@@ -171,7 +171,7 @@ class Message():
             self.message_id = re.search(r'X-GM-MSGID (\d+)', raw_headers).groups(1)[0]
 
         print "subject is ",self.subject
-        Parse attachments into attachment objects array for this message
+        print "Parse attachments into attachment objects array for this message"
         self.attachments = [
             Attachment(attachment) for attachment in self.message._payload
                 if not isinstance(attachment, basestring) and attachment.get('Content-Disposition') is not None
